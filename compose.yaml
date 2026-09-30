@@ -1,0 +1,15 @@
+services:
+  impactlens:
+    build: .
+    ports:
+      - '127.0.0.1:4000:4000'
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      DATA_DIR: /app/data
+      APP_ORIGIN: http://127.0.0.1:4000
+    volumes:
+      - impactlens-data:/app/data
+    restart: unless-stopped
+volumes:
+  impactlens-data:
